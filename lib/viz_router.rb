@@ -4,7 +4,7 @@ require 'routing_table'
 
 # Simple implementation of L3 switch in OpenFlow1.0
 # rubocop:disable ClassLength
-class SimpleRouter < Trema::Controller
+class VizRouter < Trema::Controller
   def start(_args)
     load File.join(__dir__, '..', 'simple_router.conf')
     @interfaces = Interfaces.new(Configuration::INTERFACES)
