@@ -6,7 +6,7 @@ require 'routing_table'
 # rubocop:disable ClassLength
 class VizRouter < Trema::Controller
   def start(_args)
-    load File.join(__dir__, '..', 'simple_router.conf')
+    load File.join(__dir__, '..', 'viz_router.conf')
     @interfaces = Interfaces.new(Configuration::INTERFACES)
     @arp_table = ArpTable.new
     @routing_table = RoutingTable.new(Configuration::ROUTES)
