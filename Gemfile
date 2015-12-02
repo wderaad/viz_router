@@ -8,6 +8,7 @@ gem 'thin'
 gem 'mongo'
 gem 'bson_ext'
 gem 'json'
+gem 'rest-client'
 
 group :development, :test do
   gem 'aruba', require: false

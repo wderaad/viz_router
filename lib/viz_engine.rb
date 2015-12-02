@@ -14,7 +14,6 @@ configure do
   config_file = File.read('package.json')
   configs = JSON.parse config_file
   set :public_folder, configs['config']['public_folder']
-  set :host, configs['config']['host']
   set :port, configs['config']['port']
   #Location of Mongo DB
   mongo_url = configs['config']['db_url']
@@ -34,8 +33,7 @@ end
 
 #Summary content from Database
 get '/summary' do
-  coll = settings.db.collection('summary')
-  content_type :json
+   content_type :json
   if params[:location]
     loc = params[:location]
   else

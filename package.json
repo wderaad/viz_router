@@ -9,7 +9,6 @@
   },
   "license": "GNU Public",
   "config": {
-    "host": "localhost",
     "port": "3000",
     "public_folder": "static",
     "db_url": "mongodb://localhost:27017/vizdb"
