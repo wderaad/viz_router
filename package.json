@@ -1,0 +1,17 @@
+{
+  "name": "SDV Viz",
+  "version": "0.0.1",
+  "description": "A playground for analysis of SDN data",
+  "main": "index.js",
+  "author": {
+  "name": "William DeRaad",
+  "url": "https://github.com/wderaad"
+  },
+  "license": "GNU Public",
+  "config": {
+    "host": "localhost",
+    "port": "3000",
+    "public_folder": "static",
+    "db_url": "mongodb://localhost:27017/vizdb"
+  }
+}

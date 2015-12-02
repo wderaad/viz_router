@@ -1,6 +1,13 @@
 source 'https://rubygems.org'
 
+gem 'bundler'
 gem 'trema'
+gem 'grape'
+gem 'sinatra'
+gem 'thin'
+gem 'mongo'
+gem 'bson_ext'
+gem 'json'
 
 group :development, :test do
   gem 'aruba', require: false
