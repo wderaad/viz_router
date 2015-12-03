@@ -9,7 +9,7 @@ gem 'mongo'
 gem 'bson_ext'
 gem 'json'
 gem 'rest-client'
-gem 'nmap'
+gem 'ruby-nmap'
 
 
 group :development, :test do

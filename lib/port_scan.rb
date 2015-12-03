@@ -1,4 +1,5 @@
 require 'nmap/program'
+require 'nmap/xml'
 
 Nmap::Program.scan do |nmap|
   nmap.syn_scan = true
@@ -11,4 +12,12 @@ Nmap::Program.scan do |nmap|
   nmap.targets = '192.168.1.*'
 end
 
+Nmap::XML.new('scan.xml') do |xml|
+  xml.each_host do |host|
+    puts "[#{host.ip}]"
 
+    host.each_port do |port|
+      puts "  #{port.number}/#{port.protocol}\t#{port.state}\t#{port.service}"
+    end
+  end
+end
