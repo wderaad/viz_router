@@ -1,23 +1,23 @@
-require 'nmap/program'
-require 'nmap/xml'
+require 'socket'
+require 'timeout'
 
-Nmap::Program.scan do |nmap|
-  nmap.syn_scan = true
-  nmap.service_scan = true
-  nmap.os_fingerprint = true
-  nmap.xml = 'scan.xml'
-  nmap.verbose = true
-
-  nmap.ports = [20,21,22,23,25,80,110,443,512,522,8080,1080]
-  nmap.targets = '192.168.1.*'
-end
-
-Nmap::XML.new('scan.xml') do |xml|
-  xml.each_host do |host|
-    puts "[#{host.ip}]"
-
-    host.each_port do |port|
-      puts "  #{port.number}/#{port.protocol}\t#{port.state}\t#{port.service}"
+def is_port_open?(ip, port)
+  begin
+    Timeout::timeout(1) do
+      begin
+        s = TCPSocket.new(ip, port)
+        s.close
+        return true
+      rescue Errno::ECONNREFUSED, Errno::EHOSTUNREACH, Errno::EADDRNOTAVAIL
+        return false
+      end
     end
+  rescue Timeout::Error
   end
+
+  return false
+  end
+
+(0..200).each do |port|
+  puts "port #{port}", is_port_open?('54.213.216.70', port)
 end
