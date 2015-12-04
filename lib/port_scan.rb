@@ -18,6 +18,22 @@ def is_port_open?(ip, port)
   return false
   end
 
-(0..200).each do |port|
-  puts "port #{port}", is_port_open?('54.213.216.70', port)
+$host = ARGV[0]
+def ports_open?(port_range)
+  ret = []
+  port_range.each do |port|
+    if is_port_open?($host, port)
+      ret << port
+    end
+  end
+  return ret
 end
+
+a = (1..100).to_a
+b = (200..310).to_a
+t1=Thread.new{ports_open?(a)}
+t2=Thread.new{ports_open?(b)}
+a1 = t1.value
+a2 = t2.value
+a1.concat a2
+puts a1
