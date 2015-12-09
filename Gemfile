@@ -9,6 +9,7 @@ gem 'mongo'
 gem 'bson_ext'
 gem 'json'
 gem 'rest-client'
+gem 'mongoid', '~> 4.0.2'
 
 
 group :development, :test do

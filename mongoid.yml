@@ -1,0 +1,15 @@
+production: 
+  sessions:
+    default:
+      uri: 'mongodb://username:password@localhost:27017/vizdb'
+
+      options:
+        max_retries: 30
+        
+        retry_interval: 1
+
+        #Doubled so 30 second timeout
+        timeout: 15
+
+        # refresh_interval specifies the number of seconds to cache server information.
+        refresh_interval: 10

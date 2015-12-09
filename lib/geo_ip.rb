@@ -5,33 +5,33 @@ require 'bundler/setup'
 require 'mongo'
 require 'json'
 require 'rest-client'
+require 'mongoid'
 
-include Mongo
+Mongoid.load!('mongoid.yml', :production)
+
+class Geo
+  include Mongoid::Document
+  field :address
+  field :country
+  field :stateprov
+  field :city
+  store_in collection: 'geo_ip'
+end
 
 class GeoIP
-
-  def initialize()
-    config_file = File.read('package.json')
-    configs = JSON.parse config_file
-    #Location of Mongo DB
-    mongo_url = configs['config']['db_url']
-    mongo_client = Mongo::Connection.from_uri(mongo_url)
-    @db = mongo_client.db(File.basename(mongo_url))
-    @coll = @db.collection('ip_geo')
-
-  end
 
   def getGeo(ip)
     resp = getFromDb(ip)
     if resp.nil? || resp.empty?
       resp = getFromRest(ip)
-      @coll.insert(resp)
+      Geo.new(resp).save
     end
     resp
   end
 
   def getFromDb(ip)
-    @coll.find("address" => ip).to_a
+    db = Mongoid::Sessions.default
+    tag = db[:geo_ip].find("address" => ip).first
   end
 
   def getFromRest(ip)
