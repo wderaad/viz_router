@@ -17,7 +17,7 @@ function SummaryViewModel() {
     var self = this;
     self.summaries = ko.observableArray();
     $.ajax({
-        url: "http://localhost:3000/summary",
+        url: "/summary",
         cache: false,
         type: 'GET',
         contentType: 'application/json; charset=utf-8',
