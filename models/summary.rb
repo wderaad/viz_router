@@ -3,8 +3,7 @@ require 'mongoid'
 Mongoid.load!('mongoid.yml', :production)
 class Summary
   include Mongoid::Document
-  field :first_name, type: String
-  field :last_name, type: String
+  field :full_name, type: String
   field :user_name, type: String
   field :site_country, type: String
   field :site_sp, type: String

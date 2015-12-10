@@ -16,8 +16,7 @@ class CreateSummary
       summary = Summary.new(user_name: user_name)
     end
     employee = db[:employee].find('user_name' => user_name).first
-    summary.first_name = employee[:first_name]
-    summary.last_name = employee[:last_name]
+    summary.full_name = employee[:full_name]
     summary.user_name = user_name
     summary.site_country = employee[:site_country]
     summary.site_sp = employee[:site_sp]

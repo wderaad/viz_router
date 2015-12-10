@@ -1,5 +1,5 @@
 {
-  "name": "SDV Viz",
+  "name": "SDVViz",
   "version": "0.0.1",
   "description": "A playground for analysis of SDN data",
   "main": "index.js",
@@ -10,7 +10,6 @@
   "license": "GNU Public",
   "config": {
     "port": "3000",
-    "public_folder": "static",
     "db_url": "mongodb://localhost:27017/vizdb"
   }
 }
