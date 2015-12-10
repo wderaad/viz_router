@@ -27,6 +27,7 @@ function SummaryViewModel() {
             self.summaries(summary); //Putting the response in ObservableArray
         }
     });
+    setTimeout("SummaryViewModel()", 30000);
 }
 var summaryViewModel = new SummaryViewModel();
 ko.applyBindings(summaryViewModel);
