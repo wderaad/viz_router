@@ -69,3 +69,10 @@ module CreateSummary
   end
 end
 
+new_ip = ARGV[0]
+new_uname = ARGV[1]
+sbuilder = CreateSummary.new
+sbuilder.setEmployeeInfo(new_uname)
+sbuilder.setLocationInfo(new_ip, new_uname)
+sbuilder.setPortInfo(new_ip, new_uname)
+sbuilder.setTimeInfo(new_uname)
