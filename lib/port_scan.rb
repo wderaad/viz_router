@@ -49,11 +49,11 @@ module PortScan
     def portThreat(ip)
       open = doScan(ip)
       if open.nil? || open.empty?
-        return 'low'
+        return 'Low'
       elsif httpPorts(open)
-        return 'moderate'
+        return 'Moderate'
       else
-        return 'high'
+        return 'High'
       end
     end
 

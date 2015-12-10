@@ -18,3 +18,12 @@ else
   emp = Employee.new(full_name: "James Smith", user_name: "jsmith",site_country: "US" ,site_sp: "California")
 end
 emp.save
+
+e2 = Employee.where(user_name: "wderaad").first
+
+if e2
+  e2.set(full_name: "William DeRaad",user_name: "wderaad",site_country: "US" ,site_sp: "California")
+else
+  e2 = Employee.new(full_name: "William DeRaad",user_name: "wderaad",site_country: "US" ,site_sp: "California")
+end
+e2.save

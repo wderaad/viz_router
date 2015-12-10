@@ -11,6 +11,6 @@ class Summary
   field :location_sp, type: String
   field :port_access, type: String
   field :login_time, type: Time
-  field :time_active, type: Time
+  field :time_active, type: Integer
   store_in collection: 'summary'
 end

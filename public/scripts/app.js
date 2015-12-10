@@ -23,7 +23,6 @@ function SummaryViewModel() {
         contentType: 'application/json; charset=utf-8',
         data: {},
         success: function (data) {
-            console.log(data.user_name);
             var summary = new Summary(data);
             self.summaries(summary); //Putting the response in ObservableArray
         }
